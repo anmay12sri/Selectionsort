@@ -1,35 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
- 
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-   
     <title>Sorting Visualizer</title>
-
-   
     <link href="style11.css" rel="stylesheet" />
-  </head>
+</head>
+<body>
+    <section class="head">Selection Sort Visualizer</section>
+    <section class="data-container"></section>
 
+    <div class="button-container">
+        <button class="btn1" onclick="generate()" id="Button1">
+            Generate New Array
+        </button>
+        <button class="btn2" onclick="startSort()" id="Button2">
+            Apply Selection Sort
+        </button>
+        
+    </div>
+    <footer>
+      <div class="footer-content">
+        <p>
+          <strong>Selection Sort:</strong>
+          Selection Sort is a simple comparison-based sorting algorithm. It divides the input list into two parts: a sorted and an unsorted region. The algorithm repeatedly selects the smallest (or largest, depending on the order) element from the unsorted region and swaps it with the first element of the unsorted region. This process is repeated until the entire list is sorted.
+        </p>
   
-  <body >
-   <section class="head">Selection Sort Visualizer</section>
-   <section class="data-container"></section>
+        <p>
+          <strong>Key Features:</strong>
+          <ul>
+            <li>Simplicity: Selection Sort is straightforward and easy to understand.</li>
+            <li>In-Place Sorting: It sorts the elements within the original array without requiring additional memory space.</li>
+            <li>Quadratic Time Complexity: Selection Sort has a time complexity of O(n^2), making it less efficient for large datasets.</li>
+          </ul>
+        </p>
+  
+        <p>
+          <strong>How it Works:</strong>
+          <ol>
+            <li>Find the minimum element in the unsorted region.</li>
+            <li>Swap it with the first element of the unsorted region.</li>
+            <li>Expand the sorted region to include the newly sorted element.</li>
+            <li>Repeat these steps until the entire list is sorted.</li>
+          </ol>
+        </p>
+  
+        <p>
+          <strong>Use Case:</strong>
+          Selection Sort is suitable for small datasets or situations where the simplicity of the algorithm is more valuable than its efficiency. However, for larger datasets, more efficient algorithms like QuickSort or MergeSort are preferred.
+        </p>
+      </div>
+    </footer>
+  
 
-   
-   <button  class="btn1" onclick="generate()" id="Button1" >
-     Generate New Array</button>
-
-   
-   <button class="btn2"
-           onclick="SelectionSort(),disable()" id="Button2" >
-     Selection Sort</button>
-  </body>
-
- 
-  <script src="Selection.js"></script>
+    <!-- linking index.js -->
+    <script src="Selection.js"></script>
+</body>
 </html>
