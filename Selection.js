@@ -1,6 +1,6 @@
 const container = document.querySelector(".data-container");
 
-function generateBars(num = 20) {
+function generateBars(num = 12) {
   for (let i = 0; i < num; i++) {
     const value = Math.floor(Math.random() * 100) + 1;
     const bar = document.createElement("div");
@@ -52,12 +52,47 @@ async function selectionSort(delay = 300) {
     bars[i].style.backgroundColor = "rgb(49, 226, 13)";
   }
 
- 
   document.getElementById("Button1").disabled = false;
   document.getElementById("Button1").style.backgroundColor = "#6f459e";
 
   document.getElementById("Button2").disabled = false;
   document.getElementById("Button2").style.backgroundColor = "#6f459e";
+  document.getElementById("Button3").disabled = false;
+  document.getElementById("Button3").style.backgroundColor = "#6f459e";
+}
+
+async function bubbleSort(delay = 300) {
+  let bars = document.querySelectorAll(".bar");
+  const totalBars = bars.length;
+
+  for (let i = 0; i < totalBars; i++) {
+    for (let j = 0; j < totalBars - i - 1; j++) {
+      bars[j].style.backgroundColor = "red";
+      bars[j + 1].style.backgroundColor = "red";
+
+      await new Promise((resolve) => setTimeout(resolve, delay));
+
+      const val1 = parseInt(bars[j].childNodes[0].innerHTML);
+      const val2 = parseInt(bars[j + 1].childNodes[0].innerHTML);
+
+      if (val1 > val2) {
+        [bars[j].style.height, bars[j + 1].style.height] = [bars[j + 1].style.height, bars[j].style.height];
+        [bars[j].childNodes[0].innerText, bars[j + 1].childNodes[0].innerText] = [bars[j + 1].childNodes[0].innerText, bars[j].childNodes[0].innerText];
+      }
+
+      bars[j].style.backgroundColor = "rgb(24, 190, 255)";
+      bars[j + 1].style.backgroundColor = "rgb(24, 190, 255)";
+    }
+    bars[totalBars - i - 1].style.backgroundColor = "rgb(49, 226, 13)";
+  }
+
+  document.getElementById("Button1").disabled = false;
+  document.getElementById("Button1").style.backgroundColor = "#6f459e";
+
+  document.getElementById("Button2").disabled = false;
+  document.getElementById("Button2").style.backgroundColor = "#6f459e";
+  document.getElementById("Button3").disabled = false;
+  document.getElementById("Button3").style.backgroundColor = "#6f459e";
 }
 
 function generate() {
@@ -71,11 +106,17 @@ function disable() {
   document.getElementById("Button1").style.backgroundColor = "#d8b6ff";
   document.getElementById("Button2").disabled = true;
   document.getElementById("Button2").style.backgroundColor = "#d8b6ff";
+  document.getElementById("Button3").disabled = true;
+  document.getElementById("Button3").style.backgroundColor = "#d8b6ff";
 }
 
-function startSort() {
+function startSort(sortType) {
   disable();
-  selectionSort();
+  if (sortType === "selection") {
+    selectionSort();
+  } else if (sortType === "bubble") {
+    bubbleSort();
+  }
 }
 
 generateBars();
